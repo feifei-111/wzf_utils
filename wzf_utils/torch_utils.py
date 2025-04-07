@@ -51,6 +51,11 @@ def save(obj, name):
         with open(path, "w") as f:
             f.write(str(obj))
 
+def load_tensor(name):
+    device = torch.device('cpu')
+    path = _name_to_path(name)
+    tensor = torch.load(path, weights_only=True, map_location=device)
+    return tensor
 
 # prof analyze
 
